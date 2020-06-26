@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.rasalexman.hiltclean.presentation.start.StartFragment"
+        android:label="start_fragment"
+        tools:layout="@layout/fragment_start"/>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.rasalexman.hiltclean.presentation.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" />
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.rasalexman.hiltclean.presentation.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            android:id="@+id/showSelectLanguageDialog"
+            app:destination="@id/selectLanguageDialog">
+
+            <argument
+                android:name="langType"
+                android:defaultValue=""
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <action
+        android:id="@+id/showLoginFragment"
+        app:destination="@id/loginFragment"
+        app:launchSingleTop="true" />
+
+    <action
+        android:id="@+id/showMainFragment"
+        app:destination="@id/mainFragment"
+        app:launchSingleTop="true" />
+
+    <dialog
+        android:id="@+id/selectLanguageDialog"
+        android:name="com.rasalexman.hiltclean.presentation.main.dialog.SelectLanguageDialog"
+        android:label="SelectLanguageDialog">
+
+        <argument
+            android:name="langType"
+            android:defaultValue=""
+            app:argType="string" />
+    </dialog>
+
+</navigation>

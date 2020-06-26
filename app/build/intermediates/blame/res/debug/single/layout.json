@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/alexander/HiltCleanExample/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_main.xml",
+        "source": "/Users/alexander/HiltCleanExample/app/src/main/res/layout/fragment_main.xml"
+    },
+    {
+        "merged": "/Users/alexander/HiltCleanExample/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_login.xml",
+        "source": "/Users/alexander/HiltCleanExample/app/src/main/res/layout/fragment_login.xml"
+    }
+]

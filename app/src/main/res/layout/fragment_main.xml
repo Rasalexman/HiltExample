@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="com.rasalexman.hiltclean.presentation.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:focusableInTouchMode="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.main.MainFragment">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:titleTextColor="@color/colorWhite"
+                app:title="@string/title_main_toolbar" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:id="@+id/selectLangLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/selectedLangButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{viewModel.selectedLang.displayName}"
+                android:textAllCaps="false"
+                tools:text="Hello" />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size_8dp"
+                android:onClick="@{()->viewModel.switchLanguages()}"
+                android:backgroundTint="@color/colorWhite"
+                android:src="@drawable/ic_change_arrows_24dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/targetLangButton"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:textColor="@color/colorTextPrimary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@{viewModel.targetLang.displayName}"
+                android:textAllCaps="false"
+                tools:text="world" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/delimView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1dp"
+            android:background="@color/colorTextSecondary"
+            app:layout_constraintTop_toBottomOf="@+id/selectLangLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/phraseTextInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorTextPrimary"
+            android:minHeight="@dimen/phraseTextInput_minHeight"
+            android:gravity="top"
+            android:text="@={viewModel.inputText}"
+            android:padding="@dimen/size_16dp"
+            android:textSize="@dimen/textSize_16sp"
+            android:hint="@string/hint_phraseTextInput"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/selectLangLayout"/>
+
+        <TextView
+            android:id="@+id/translatedTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_8dp"
+            android:gravity="top"
+            android:padding="@dimen/size_16dp"
+            android:text="@{viewModel.translatedText}"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="@dimen/textSize_16sp"
+            app:layout_constraintEnd_toStartOf="@+id/progressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/phraseTextInput"
+            tools:text="Hello world" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="@dimen/size_24dp"
+            android:layout_height="@dimen/size_24dp"
+            android:layout_marginTop="@dimen/size_16dp"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/translatedTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

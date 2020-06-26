@@ -1,0 +1,67 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.rasalexman.hiltclean"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:5:5-66
+11-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+13    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+14    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+15
+16    <application
+16-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:7:5-22:19
+17        android:name="com.rasalexman.hiltclean.application.HiltExampleApplication"
+17-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:14:9-59
+18        android:allowBackup="true"
+18-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:8:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.4.0-alpha01] /Users/alexander/.gradle/caches/transforms-2/files-2.1/42c28a970fafb6ae86ff8e51a9e1915b/core-1.4.0-alpha01/AndroidManifest.xml:24:18-86
+20        android:debuggable="true"
+21        android:icon="@mipmap/ic_launcher"
+21-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:9:9-43
+22        android:label="@string/app_name"
+22-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:10:9-41
+23        android:roundIcon="@mipmap/ic_launcher_round"
+23-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:11:9-54
+24        android:supportsRtl="true"
+24-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:12:9-35
+25        android:testOnly="true"
+26        android:theme="@style/AppTheme" >
+26-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:13:9-40
+27        <activity android:name="com.rasalexman.hiltclean.MainActivity" >
+27-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:15:9-21:20
+27-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:15:19-47
+28            <intent-filter>
+28-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:16:13-20:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:17:17-69
+29-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:17:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:19:17-77
+31-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:19:27-74
+32            </intent-filter>
+33        </activity>
+34
+35        <provider
+35-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+36            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+36-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+37            android:authorities="com.rasalexman.hiltclean.lifecycle-process"
+37-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+38            android:exported="false"
+38-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+39            android:multiprocess="true" />
+39-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+40    </application>
+41
+42</manifest>
