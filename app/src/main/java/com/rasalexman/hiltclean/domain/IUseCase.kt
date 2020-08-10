@@ -3,6 +3,11 @@ package com.rasalexman.hiltclean.domain
 import com.rasalexman.hiltclean.data.Result
 
 interface IUseCase {
+
+    interface SingleRaw<In : Any?, Out : Any> {
+        suspend operator fun invoke(inputData: In): Out
+    }
+
     interface Single<In : Any?, Out : Any> {
         suspend operator fun invoke(inputData: In): Result<Out>
     }

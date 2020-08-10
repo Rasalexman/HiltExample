@@ -13,6 +13,13 @@ inline fun <reified T> ViewModel.asyncLiveData(
     noinline block: suspend LiveDataScope<T>.() -> Unit
 ) = liveData(context = viewModelScope.coroutineContext + Dispatchers.IO, block = block)
 
+fun ViewModel.launchUI(
+    start: CoroutineStart = CoroutineStart.DEFAULT,
+    block: suspend CoroutineScope.() -> Unit
+) {
+    viewModelScope.launch(viewModelScope.coroutineContext + Dispatchers.Main, start, block)
+}
+
 fun ViewModel.launchAsync(
     start: CoroutineStart = CoroutineStart.DEFAULT,
     block: suspend CoroutineScope.() -> Unit

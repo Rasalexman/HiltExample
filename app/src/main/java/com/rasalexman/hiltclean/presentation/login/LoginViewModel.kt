@@ -1,19 +1,20 @@
 package com.rasalexman.hiltclean.presentation.login
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import android.util.Patterns
-import androidx.hilt.lifecycle.ViewModelInject
-import com.rasalexman.hiltclean.data.Result
-
 import com.rasalexman.hiltclean.R
 import com.rasalexman.hiltclean.common.extensions.launchAsync
+import com.rasalexman.hiltclean.common.extensions.launchUI
+import com.rasalexman.hiltclean.data.Result
+import com.rasalexman.hiltclean.domain.IValidateUserNameUseCase
 import com.rasalexman.hiltclean.domain.LoginUseCase
 import com.rasalexman.hiltclean.model.ui.LoginData
 
 class LoginViewModel @ViewModelInject constructor(
-    private val loginUseCase: LoginUseCase
+    private val loginUseCase: LoginUseCase,
+    private val validateUserNameUseCase: IValidateUserNameUseCase
 ) : ViewModel() {
 
     val userName = MutableLiveData<String>()
@@ -49,8 +50,10 @@ class LoginViewModel @ViewModelInject constructor(
         }
     }
 
-    fun loginDataChanged(username: String, password: String) {
-        if (!isUserNameValid(username)) {
+    fun loginDataChanged(username: String, password: String) = launchUI {
+        val resultValidateName = validateUserNameUseCase(username)
+
+        if (!resultValidateName) {
             isButtonEnabled.value = false
             userNameError.value = R.string.invalid_username
         } else if (!isPasswordValid(password)) {
@@ -58,15 +61,6 @@ class LoginViewModel @ViewModelInject constructor(
             userPasswordError.value = R.string.invalid_password
         } else {
             isButtonEnabled.value = true
-        }
-    }
-
-    // A placeholder username validation check
-    private fun isUserNameValid(username: String): Boolean {
-        return if (username.contains("@")) {
-            Patterns.EMAIL_ADDRESS.matcher(username).matches()
-        } else {
-            username.isNotBlank()
         }
     }
 

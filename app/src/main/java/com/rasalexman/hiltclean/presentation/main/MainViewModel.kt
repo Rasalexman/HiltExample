@@ -8,7 +8,10 @@ import com.rasalexman.hiltclean.common.extensions.launchAsync
 import com.rasalexman.hiltclean.data.Result
 import com.rasalexman.hiltclean.domain.TranslateUseCase
 import com.rasalexman.hiltclean.providers.preference.IUserPreference
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.onErrorResume
 import java.util.*
 
 class MainViewModel @ViewModelInject constructor(
@@ -31,7 +34,11 @@ class MainViewModel @ViewModelInject constructor(
 
     val inputText = MutableLiveData<String>()
     val translatedText = inputText.asFlow()
+        .filter { it != null }
         .debounce(DEBOUNCE_DELAY)
+        .catch {
+            println("Some critical issue $it")
+        }
         .asLiveData()
         .distinctUntilChanged()
         .switchMap {
@@ -72,7 +79,7 @@ class MainViewModel @ViewModelInject constructor(
         }
     }
 
-    private suspend fun putLastLocaleTo(lastLocale: String, liveData: MutableLiveData<Locale>) {
+    private fun putLastLocaleTo(lastLocale: String, liveData: MutableLiveData<Locale>) {
         val availableLocales = Locale.getAvailableLocales()
         val lastSelectedLang = lastLocale
             .takeIf { it.isNotEmpty() }

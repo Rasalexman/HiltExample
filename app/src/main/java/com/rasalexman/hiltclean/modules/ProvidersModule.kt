@@ -1,6 +1,8 @@
 package com.rasalexman.hiltclean.modules
 
 import android.app.Application
+import com.rasalexman.hiltclean.domain.IValidateUserNameUseCase
+import com.rasalexman.hiltclean.domain.ValidateUserNameUseCase
 import com.rasalexman.hiltclean.providers.network.api.ITranslateApi
 import com.rasalexman.hiltclean.providers.network.createOkHttpClient
 import com.rasalexman.hiltclean.providers.network.createWebServiceApi
@@ -29,5 +31,9 @@ object ProvidersModule {
     @Provides
     @Singleton
     fun provideTranslateApi(okHttpClient: OkHttpClient): ITranslateApi = createWebServiceApi(okHttpClient = okHttpClient)
+
+    @Provides
+    @Singleton
+    fun provideValidateNameUseCase(): IValidateUserNameUseCase = ValidateUserNameUseCase()
 
 }
