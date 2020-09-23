@@ -24,7 +24,7 @@
 18        android:allowBackup="true"
 18-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:8:9-35
 19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.4.0-alpha01] /Users/alexander/.gradle/caches/transforms-2/files-2.1/42c28a970fafb6ae86ff8e51a9e1915b/core-1.4.0-alpha01/AndroidManifest.xml:24:18-86
+19-->[androidx.core:core:1.4.0-alpha01] /Users/alexander/.gradle/caches/transforms-2/files-2.1/bc753db1ebd77af4afb6f143e26ec520/core-1.4.0-alpha01/AndroidManifest.xml:24:18-86
 20        android:debuggable="true"
 21        android:icon="@mipmap/ic_launcher"
 21-->/Users/alexander/HiltCleanExample/app/src/main/AndroidManifest.xml:9:9-43
@@ -53,15 +53,15 @@
 33        </activity>
 34
 35        <provider
-35-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+35-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/50d91086dc88ec75301052fa5c76ecb9/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
 36            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-36-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+36-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/50d91086dc88ec75301052fa5c76ecb9/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
 37            android:authorities="com.rasalexman.hiltclean.lifecycle-process"
-37-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+37-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/50d91086dc88ec75301052fa5c76ecb9/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
 38            android:exported="false"
-38-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+38-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/50d91086dc88ec75301052fa5c76ecb9/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
 39            android:multiprocess="true" />
-39-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/1d651d03af0902105e15df2b4e04d479/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+39-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/alexander/.gradle/caches/transforms-2/files-2.1/50d91086dc88ec75301052fa5c76ecb9/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
 40    </application>
 41
 42</manifest>

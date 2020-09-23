@@ -16,6 +16,7 @@ import com.rasalexman.hiltclean.data.datasource.remote.TranslateRemoteDataSource
 import com.rasalexman.hiltclean.data.repository.ITranslateRepository;
 import com.rasalexman.hiltclean.data.repository.LoginRepository;
 import com.rasalexman.hiltclean.data.repository.TranslateRepository;
+import com.rasalexman.hiltclean.domain.IValidateUserNameUseCase;
 import com.rasalexman.hiltclean.domain.LoginUseCase;
 import com.rasalexman.hiltclean.domain.TranslateUseCase;
 import com.rasalexman.hiltclean.modules.LDSModule;
@@ -24,6 +25,7 @@ import com.rasalexman.hiltclean.modules.ProvidersModule;
 import com.rasalexman.hiltclean.modules.ProvidersModule_ProvideOkHttpFactory;
 import com.rasalexman.hiltclean.modules.ProvidersModule_ProvideTranslateApiFactory;
 import com.rasalexman.hiltclean.modules.ProvidersModule_ProvideUserPreferenceFactory;
+import com.rasalexman.hiltclean.modules.ProvidersModule_ProvideValidateNameUseCaseFactory;
 import com.rasalexman.hiltclean.presentation.login.LoginFragment;
 import com.rasalexman.hiltclean.presentation.login.LoginViewModel_AssistedFactory;
 import com.rasalexman.hiltclean.presentation.login.LoginViewModel_AssistedFactory_Factory;
@@ -68,6 +70,10 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
   private volatile Object loginLocalDataSource = new MemoizedSentinel();
 
   private volatile Object iUserPreference = new MemoizedSentinel();
+
+  private volatile Object iValidateUserNameUseCase = new MemoizedSentinel();
+
+  private volatile Provider<IValidateUserNameUseCase> provideValidateNameUseCaseProvider;
 
   private volatile Object okHttpClient = new MemoizedSentinel();
 
@@ -114,6 +120,29 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
       }
     }
     return (IUserPreference) local;
+  }
+
+  private IValidateUserNameUseCase getIValidateUserNameUseCase() {
+    Object local = iValidateUserNameUseCase;
+    if (local instanceof MemoizedSentinel) {
+      synchronized (local) {
+        local = iValidateUserNameUseCase;
+        if (local instanceof MemoizedSentinel) {
+          local = ProvidersModule_ProvideValidateNameUseCaseFactory.provideValidateNameUseCase();
+          iValidateUserNameUseCase = DoubleCheck.reentrantCheck(iValidateUserNameUseCase, local);
+        }
+      }
+    }
+    return (IValidateUserNameUseCase) local;
+  }
+
+  private Provider<IValidateUserNameUseCase> getIValidateUserNameUseCaseProvider() {
+    Object local = provideValidateNameUseCaseProvider;
+    if (local == null) {
+      local = new SwitchingProvider<>(0);
+      provideValidateNameUseCaseProvider = (Provider<IValidateUserNameUseCase>) local;
+    }
+    return (Provider<IValidateUserNameUseCase>) local;
   }
 
   private OkHttpClient getOkHttpClient() {
@@ -183,7 +212,7 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
   private Provider<IUserPreference> getIUserPreferenceProvider() {
     Object local = provideUserPreferenceProvider;
     if (local == null) {
-      local = new SwitchingProvider<>(0);
+      local = new SwitchingProvider<>(1);
       provideUserPreferenceProvider = (Provider<IUserPreference>) local;
     }
     return (Provider<IUserPreference>) local;
@@ -306,7 +335,7 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
       }
 
       private LoginViewModel_AssistedFactory getLoginViewModel_AssistedFactory() {
-        return LoginViewModel_AssistedFactory_Factory.newInstance(getLoginUseCaseProvider());
+        return LoginViewModel_AssistedFactory_Factory.newInstance(getLoginUseCaseProvider(), DaggerHiltExampleApplication_HiltComponents_ApplicationC.this.getIValidateUserNameUseCaseProvider());
       }
 
       private Provider<LoginViewModel_AssistedFactory> getLoginViewModel_AssistedFactoryProvider() {
@@ -367,7 +396,7 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
       }
 
       @Override
-      public void injectMainActivity(MainActivity arg0) {
+      public void injectMainActivity(MainActivity mainActivity) {
       }
 
       @Override
@@ -413,7 +442,7 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
         }
 
         @Override
-        public void injectLoginFragment(LoginFragment arg0) {
+        public void injectLoginFragment(LoginFragment loginFragment) {
         }
 
         @Override
@@ -421,7 +450,7 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
         }
 
         @Override
-        public void injectStartFragment(StartFragment arg0) {
+        public void injectStartFragment(StartFragment startFragment) {
         }
 
         @Override
@@ -545,7 +574,10 @@ public final class DaggerHiltExampleApplication_HiltComponents_ApplicationC exte
     @Override
     public T get() {
       switch (id) {
-        case 0: // com.rasalexman.hiltclean.providers.preference.IUserPreference 
+        case 0: // com.rasalexman.hiltclean.domain.IValidateUserNameUseCase 
+        return (T) DaggerHiltExampleApplication_HiltComponents_ApplicationC.this.getIValidateUserNameUseCase();
+
+        case 1: // com.rasalexman.hiltclean.providers.preference.IUserPreference 
         return (T) DaggerHiltExampleApplication_HiltComponents_ApplicationC.this.getIUserPreference();
 
         default: throw new AssertionError(id);

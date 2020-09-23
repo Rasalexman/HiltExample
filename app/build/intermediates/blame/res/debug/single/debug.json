@@ -8,12 +8,12 @@
         "source": "/Users/alexander/HiltCleanExample/app/src/main/res/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/alexander/HiltCleanExample/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "/Users/alexander/HiltCleanExample/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
-    },
-    {
         "merged": "/Users/alexander/HiltCleanExample/app/build/intermediates/res/merged/debug/drawable_ic_change_arrows_24dp.xml.flat",
         "source": "/Users/alexander/HiltCleanExample/app/src/main/res/drawable/ic_change_arrows_24dp.xml"
+    },
+    {
+        "merged": "/Users/alexander/HiltCleanExample/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "/Users/alexander/HiltCleanExample/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
         "merged": "/Users/alexander/HiltCleanExample/app/build/intermediates/res/merged/debug/mipmap-mdpi_ic_launcher_round.png.flat",

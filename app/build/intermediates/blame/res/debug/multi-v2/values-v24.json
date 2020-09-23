@@ -4,7 +4,7 @@
             "outputFile": "/Users/alexander/HiltCleanExample/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/alexander/.gradle/caches/transforms-2/files-2.1/aee70f2bbd607346e8053fb671cda591/media-1.0.0/res/values-v24/values-v24.xml",
+                    "source": "/Users/alexander/.gradle/caches/transforms-2/files-2.1/e7703d3e478d6bd47dae6e4b30efba00/media-1.0.0/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/alexander/.gradle/caches/transforms-2/files-2.1/24b5501e55f0ce08afdada4c17d97bf6/appcompat-1.3.0-alpha01/res/values-v24/values-v24.xml",
+                    "source": "/Users/alexander/.gradle/caches/transforms-2/files-2.1/7faf16fea9ddd4295b04471c55b0fb5c/appcompat-1.3.0-alpha01/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

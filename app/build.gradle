@@ -81,15 +81,15 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hilt"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModel"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    kapt "androidx.hilt:hilt-compiler:1.0.0-alpha01"
-    kapt 'com.google.dagger:hilt-android-compiler:2.28.1-alpha'
+    kapt 'androidx.hilt:hilt-compiler:1.0.0-alpha02'
+    kapt 'com.google.dagger:hilt-android-compiler:2.29.1-alpha'
 
     implementation "com.squareup.retrofit2:retrofit:$retrofit"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit"
     implementation "com.github.ihsanbal:LoggingInterceptor:$retrofitLogging"
 
     testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }
