@@ -1,6 +1,8 @@
 package com.rasalexman.hiltclean.modules
 
+import com.rasalexman.hiltclean.data.repository.ILoginRepository
 import com.rasalexman.hiltclean.data.repository.ITranslateRepository
+import com.rasalexman.hiltclean.data.repository.LoginRepository
 import com.rasalexman.hiltclean.data.repository.TranslateRepository
 import dagger.Binds
 import dagger.Module
@@ -16,4 +18,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindTranslateRepository(translateRepository: TranslateRepository): ITranslateRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindLoginRepository(loginRepository: LoginRepository): ILoginRepository
 }

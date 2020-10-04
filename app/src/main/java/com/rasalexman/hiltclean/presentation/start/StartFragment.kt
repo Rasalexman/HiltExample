@@ -3,7 +3,6 @@ package com.rasalexman.hiltclean.presentation.start
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.rasalexman.hiltclean.R
 import com.rasalexman.hiltclean.presentation.base.BaseFragment

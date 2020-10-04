@@ -1,7 +1,7 @@
 package com.rasalexman.hiltclean.data.repository
 
 import com.rasalexman.hiltclean.data.Result
-import com.rasalexman.hiltclean.data.datasource.local.LoginLocalDataSource
+import com.rasalexman.hiltclean.data.datasource.local.ILoginLocalDataSource
 import com.rasalexman.hiltclean.model.local.LoggedInUser
 import com.rasalexman.hiltclean.model.ui.user.UserName
 import com.rasalexman.hiltclean.model.ui.user.UserPassword
@@ -13,8 +13,8 @@ import javax.inject.Inject
  */
 
 class LoginRepository @Inject constructor(
-    val dataSource: LoginLocalDataSource
-) {
+    private val dataSource: ILoginLocalDataSource
+) : ILoginRepository {
 
     // in-memory cache of the loggedInUser object
     var user: LoggedInUser? = null
@@ -34,7 +34,7 @@ class LoginRepository @Inject constructor(
         dataSource.logout()
     }
 
-    fun login(username: UserName, password: UserPassword): Result<LoggedInUser> {
+    override fun login(username: UserName, password: UserPassword): Result<LoggedInUser> {
         // handle login
         val result = dataSource.login(username, password)
 
@@ -50,4 +50,8 @@ class LoginRepository @Inject constructor(
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }
+}
+
+interface ILoginRepository {
+    fun login(username: UserName, password: UserPassword): Result<LoggedInUser>
 }

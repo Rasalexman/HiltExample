@@ -21,19 +21,26 @@ object ProvidersModule {
 
     @Provides
     @Singleton
-    fun provideUserPreference(application: Application): IUserPreference =
-        UserPreference(application.applicationContext)
+    fun provideUserPreference(application: Application): IUserPreference {
+        return UserPreference(application.applicationContext)
+    }
 
     @Provides
     @Singleton
-    fun provideOkHttp(): OkHttpClient = createOkHttpClient()
+    fun provideOkHttp(): OkHttpClient {
+        return createOkHttpClient()
+    }
 
     @Provides
     @Singleton
-    fun provideTranslateApi(okHttpClient: OkHttpClient): ITranslateApi = createWebServiceApi(okHttpClient = okHttpClient)
+    fun provideTranslateApi(okHttpClient: OkHttpClient): ITranslateApi {
+        return createWebServiceApi(okHttpClient = okHttpClient)
+    }
 
     @Provides
     @Singleton
-    fun provideValidateNameUseCase(): IValidateUserNameUseCase = ValidateUserNameUseCase()
+    fun provideValidateNameUseCase(): IValidateUserNameUseCase {
+        return ValidateUserNameUseCase()
+    }
 
 }

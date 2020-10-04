@@ -1,18 +1,18 @@
 package com.rasalexman.hiltclean.modules
 
+import com.rasalexman.hiltclean.data.datasource.local.ILoginLocalDataSource
 import com.rasalexman.hiltclean.data.datasource.local.LoginLocalDataSource
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
-object LDSModule {
+abstract class LDSModule {
 
-    @Provides
+    @Binds
     @Singleton
-    fun provideLoginDataSource() =
-        LoginLocalDataSource()
+    abstract fun provideLoginDataSource(loginLDS: LoginLocalDataSource): ILoginLocalDataSource
 }

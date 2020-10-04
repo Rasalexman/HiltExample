@@ -59,12 +59,12 @@ class MainViewModel @ViewModelInject constructor(
         }
 
     fun switchLanguages() {
-        val selectedLangValue = selectedLang.value
-        val targetLangValue = targetLang.value
+        val selectedLangValue = selectedLang.value ?: Locale.getDefault()
+        val targetLangValue = targetLang.value ?: Locale.getDefault()
         selectedLang.value = targetLangValue
         targetLang.value = selectedLangValue
 
-        val translatedTextValue = translatedText.value
+        val translatedTextValue = translatedText.value.orEmpty()
         inputText.value = translatedTextValue
     }
 

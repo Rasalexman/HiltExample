@@ -6,13 +6,14 @@ import com.rasalexman.hiltclean.model.ui.user.UserName
 import com.rasalexman.hiltclean.model.ui.user.UserPassword
 import java.io.IOException
 import java.util.*
+import javax.inject.Inject
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
-class LoginLocalDataSource {
+class LoginLocalDataSource @Inject constructor() : ILoginLocalDataSource {
 
-    fun login(username: UserName, password: UserPassword): Result<LoggedInUser> {
+    override fun login(username: UserName, password: UserPassword): Result<LoggedInUser> {
         return try {
             // TODO: handle loggedInUser authentication
             val fakeUser = LoggedInUser(
@@ -29,7 +30,12 @@ class LoginLocalDataSource {
         }
     }
 
-    fun logout() {
+    override fun logout() {
         // TODO: revoke authentication
     }
+}
+
+interface ILoginLocalDataSource {
+    fun login(username: UserName, password: UserPassword): Result<LoggedInUser>
+    fun logout()
 }
