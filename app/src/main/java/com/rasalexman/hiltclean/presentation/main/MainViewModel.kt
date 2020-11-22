@@ -11,7 +11,6 @@ import com.rasalexman.hiltclean.providers.preference.IUserPreference
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.filter
-import kotlinx.coroutines.flow.onErrorResume
 import java.util.*
 
 class MainViewModel @ViewModelInject constructor(
@@ -19,8 +18,8 @@ class MainViewModel @ViewModelInject constructor(
     private val userPreference: IUserPreference
 ) : ViewModel() {
 
-    val selectedLang = MutableLiveData<Locale>(Locale.getDefault())
-    val targetLang = MutableLiveData<Locale>(Locale.ENGLISH)
+    val selectedLang = MutableLiveData(Locale.getDefault())
+    val targetLang = MutableLiveData(Locale.ENGLISH)
 
     init {
         launchAsync {
@@ -30,11 +29,11 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     val errorResult = MutableLiveData<String>()
-    val isLoading = MutableLiveData<Boolean>(false)
+    val isLoading = MutableLiveData(false)
 
     val inputText = MutableLiveData<String>()
     val translatedText = inputText.asFlow()
-        .filter { it != null }
+        .filter { it != null && it.isNotEmpty() }
         .debounce(DEBOUNCE_DELAY)
         .catch {
             println("Some critical issue $it")
@@ -45,7 +44,7 @@ class MainViewModel @ViewModelInject constructor(
             asyncLiveData<String> {
                 isLoading.postValue(true)
                 val langPair =
-                    "${selectedLang.value!!.language.toLowerCase()}|${targetLang.value!!.language.toLowerCase()}"
+                    "${selectedLang.value?.language.orEmpty().toLowerCase()}|${targetLang.value?.language.orEmpty().toLowerCase()}"
                 when (val result = translateUseCase(it, langPair)) {
                     is Result.Success -> {
                         emit(result.data)
@@ -69,13 +68,13 @@ class MainViewModel @ViewModelInject constructor(
     }
 
     fun updateLangByType(selectedLangIndex: Int, langType: String) {
-        val choosenLang = Locale.getAvailableLocales()[selectedLangIndex]
+        val chosenLang = Locale.getAvailableLocales()[selectedLangIndex]
         if(langType == Consts.SELECTED_LANG_TYPE) {
-            userPreference.selectedLang = choosenLang.language
-            selectedLang.value = choosenLang
+            userPreference.selectedLang = chosenLang.language
+            selectedLang.value = chosenLang
         } else {
-            userPreference.targetLang = choosenLang.language
-            targetLang.value = choosenLang
+            userPreference.targetLang = chosenLang.language
+            targetLang.value = chosenLang
         }
     }
 

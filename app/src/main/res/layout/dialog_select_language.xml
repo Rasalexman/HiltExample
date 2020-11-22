@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dialog_lang_height"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/langSearchToolbar"
+        app:title="@string/title_select_language"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:menu="@menu/menu_select_lang"
+        app:titleTextColor="@color/colorTextPrimary"/>
+
+    <ListView
+        android:id="@+id/langListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

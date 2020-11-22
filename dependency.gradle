@@ -1,13 +1,13 @@
 ext {
 
-    gradlePlugin = '4.0.1'
-    core = '1.3.1'
+    gradlePlugin = '4.0.2'
+    core = '1.3.2'
     lifecycle = "2.2.0"
     navisafe = "2.2.0"
     hilt = '2.29.1-alpha'
     hiltViewModel = "1.0.0-alpha02"
-    constraint_layout = '2.0.1'
-    appcompat = '1.3.0-alpha02'
+    constraint_layout = '2.0.4'
+    appcompat = '1.2.0'
     android_gradle_plugin = '3.5.1'
     kotlin_version = '1.4.10'
     kotlin_coroutines = "1.3.9"
@@ -15,7 +15,7 @@ ext {
 
     kotPref = "2.12.0"
     fragmentVersion = '1.3.0-beta01'
-    navigationVersion = "2.3.0"
+    navigationVersion = "2.3.1"
     lifecycleVersion = "2.2.0"
 
     retrofit = '2.9.0'
@@ -23,8 +23,8 @@ ext {
 
     room = "2.2.5"
     cardView = "1.0.0"
-    recycler = "1.2.0-alpha03"
-    materialDesign = '1.3.0-alpha02'
+    recycler = "1.2.0-alpha06"
+    materialDesign = '1.3.0-alpha03'
 
     prefs = "1.1.1"
 }

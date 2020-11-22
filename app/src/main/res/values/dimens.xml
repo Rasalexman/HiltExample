@@ -15,4 +15,6 @@
     <dimen name="textSize_14sp">14sp</dimen>
     <dimen name="textSize_16sp">16sp</dimen>
 
+    <dimen name="dialog_lang_height">460dp</dimen>
+
 </resources>
