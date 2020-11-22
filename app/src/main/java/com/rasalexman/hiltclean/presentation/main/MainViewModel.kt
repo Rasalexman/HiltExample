@@ -33,7 +33,7 @@ class MainViewModel @ViewModelInject constructor(
 
     val inputText = MutableLiveData<String>()
     val translatedText = inputText.asFlow()
-        .filter { it != null && it.isNotEmpty() }
+        .filter { it != null }
         .debounce(DEBOUNCE_DELAY)
         .catch {
             println("Some critical issue $it")
@@ -43,16 +43,20 @@ class MainViewModel @ViewModelInject constructor(
         .switchMap {
             asyncLiveData<String> {
                 isLoading.postValue(true)
-                val langPair =
-                    "${selectedLang.value?.language.orEmpty().toLowerCase()}|${targetLang.value?.language.orEmpty().toLowerCase()}"
-                when (val result = translateUseCase(it, langPair)) {
-                    is Result.Success -> {
-                        emit(result.data)
+                if(it.isNotEmpty()) {
+                    val langPair = "${selectedLang.value?.language.orEmpty().toLowerCase()}|${targetLang.value?.language.orEmpty().toLowerCase()}"
+                    when (val result = translateUseCase(it, langPair)) {
+                        is Result.Success -> {
+                            emit(result.data)
+                        }
+                        is Result.Error -> {
+                            errorResult.postValue(result.exception.message.orEmpty())
+                        }
                     }
-                    is Result.Error -> {
-                        errorResult.postValue(result.exception.message.orEmpty())
-                    }
+                } else {
+                    emit(it)
                 }
+
                 isLoading.postValue(false)
             }
         }
