@@ -42,8 +42,8 @@ class MainViewModel @ViewModelInject constructor(
         .distinctUntilChanged()
         .switchMap {
             asyncLiveData<String> {
-                isLoading.postValue(true)
                 if(it.isNotEmpty()) {
+                    isLoading.postValue(true)
                     val langPair = "${selectedLang.value?.language.orEmpty().toLowerCase()}|${targetLang.value?.language.orEmpty().toLowerCase()}"
                     when (val result = translateUseCase(it, langPair)) {
                         is Result.Success -> {
@@ -56,7 +56,6 @@ class MainViewModel @ViewModelInject constructor(
                 } else {
                     emit(it)
                 }
-
                 isLoading.postValue(false)
             }
         }
